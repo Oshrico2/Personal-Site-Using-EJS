@@ -201,6 +201,8 @@ passport.use(new GitHubStrategy({
 app.get("/", async (req, res) => {
     try {
       const counter = await Counter.findOneAndUpdate({}, { $inc: { visits: 1 } }, { new: true });
+      console.log(process.env.PORT);
+
       res.render("index.ejs", { backgroundImage: '/images/background.jpg'
       ,visits:counter.visits
       });
@@ -208,7 +210,6 @@ app.get("/", async (req, res) => {
       console.error(err);
       res.status(500).send('Internal Server Error');
     }
-    console.log(process.env.PORT);
   });
 
 app.get("/blog", function(req, res){
