@@ -144,7 +144,7 @@ passport.deserializeUser(function(id,done){
 passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: process.env.PORT + "auth/google/secrets"
+    callbackURL: process.env.PORT + "/auth/google/secrets"
   },
   function(accessToken, refreshToken, profile, cb) {
     console.log(process.env.PORT);
@@ -166,7 +166,7 @@ passport.use(new GoogleStrategy({
 passport.use(new FacebookStrategy({
     clientID: process.env.CLIENT_ID_FACEBOOK,
     clientSecret: process.env.CLIENT_SECRET_FACEBOOK,
-    callbackURL:  process.env.PORT + "auth/facebook/secrets",
+    callbackURL:  process.env.PORT + "/auth/facebook/secrets",
     profileFields: ['id', 'displayName', 'photos', 'email']
   },
   function(accessToken, refreshToken, profile, cb) {
@@ -185,7 +185,7 @@ passport.use(new FacebookStrategy({
 passport.use(new GitHubStrategy({
     clientID: process.env.CLIENT_ID_GITHUB,
     clientSecret: process.env.CLIENT_SECRET_GITHUB,
-    callbackURL: process.env.PORT + "auth/github/secrets"
+    callbackURL: process.env.PORT + "/auth/github/secrets"
   },
   function(accessToken, refreshToken, profile, done) {
     console.log(process.env.PORT);
