@@ -81,6 +81,12 @@ body {
       width: 600px;
     }
   } */
+  @media (max-width: 480px) {
+    .container{
+      width: 500px;
+      min-height: 550px;
+    }
+}
   
   .form-container form {
     background: #fff;
