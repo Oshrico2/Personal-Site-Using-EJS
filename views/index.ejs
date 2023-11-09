@@ -4,6 +4,14 @@
     body {
         background-image: url("<%= backgroundImage %>");
     }
+    @media (max-width:480px){
+        body{
+            animation: none;
+        }
+        .btn{
+            height: 60px;
+        }
+    }
 </style>
 
 <section id="content">
