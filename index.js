@@ -147,7 +147,7 @@ passport.use(new GoogleStrategy({
     callbackURL: process.env.PORT + "auth/google/secrets"
   },
   function(accessToken, refreshToken, profile, cb) {
-
+    console.log(process.env.PORT);
     User.findOrCreate(
       { googleId: profile.id },
       { 
@@ -170,7 +170,7 @@ passport.use(new FacebookStrategy({
     profileFields: ['id', 'displayName', 'photos', 'email']
   },
   function(accessToken, refreshToken, profile, cb) {
-    
+    console.log(process.env.PORT);
     User.findOrCreate(
       { facebookId: profile.id ,
         name: _.startCase(profile.displayName),username: _.capitalize(profile.displayName)},
@@ -188,7 +188,7 @@ passport.use(new GitHubStrategy({
     callbackURL: process.env.PORT + "auth/github/secrets"
   },
   function(accessToken, refreshToken, profile, done) {
-
+    console.log(process.env.PORT);
     User.findOrCreate({ githubId: profile.id },
          { name: _.capitalize(profile.username),username: _.capitalize(profile.username)},
      function (err, user) {
