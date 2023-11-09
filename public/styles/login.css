@@ -76,11 +76,11 @@ body {
     transition: 333ms;
   }
   
-  @media (max-width: 767px) {
+  /* @media (max-width: 767px) {
     .container {
       width: 600px;
     }
-  }
+  } */
   
   .form-container form {
     background: #fff;
