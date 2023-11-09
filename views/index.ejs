@@ -1,0 +1,49 @@
+<%- include("partials/header.ejs") %>
+
+<style>
+    body {
+        background-image: url("<%= backgroundImage %>");
+    }
+</style>
+
+<section id="content">
+<div class="container-fluid hidden-container">
+    <div class="row">
+        <div class="about-title col-lg-6 col-md-12 col-sm-12">
+            <h1 class="typing-content" id="aboutName"></h1>
+            <p class="typing-content" id="aboutTitle"></p>
+        </div>
+        <div class="about-content col-lg-6 col-md-12 col-sm-12">
+            <p class="typing-content" id="aboutContent"></p>
+        </div>
+    </div>
+</div>
+</section>
+<section>
+<div class="social-buttons row">
+    <a  href ="https://github.com/Oshrico2" class="btn btn-dark btn-ghost"><i class="fa-brands fa-github fa-lg"></i> Github</a>
+    <a href="https://www.linkedin.com/in/oshrico2/" class="btn btn-dark btn-ghost"><i class="fa-brands fa-linkedin fa-lg"></i> LinkedIn</a>
+</div>
+</section>
+
+
+
+
+<script>
+    const targetStrings = [
+        { id: 'aboutName', text: "Osher Cohen" },
+        { id: 'aboutTitle', text: "Programmer, web designer and student." },
+        { id: 'aboutContent', text: "I am a third year computer science undergraduate student at HIT.\nI have coded a lot of projects during my studies,\nHave extensive knowledge and passion for programming fields." }
+    ];
+
+    function addLetter(element, text, currentIndex = 0) {
+        if (currentIndex < text.length) {
+            document.getElementById(element).textContent += text[currentIndex];
+            currentIndex++;
+            setTimeout(() => addLetter(element, text, currentIndex), 30);
+        }
+    }
+
+    targetStrings.forEach(({ id, text }) => addLetter(id, text));
+</script>
+<%- include("partials/footer.ejs") %>

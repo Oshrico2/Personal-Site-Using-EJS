@@ -1,0 +1,14 @@
+<%- include("partials/header"); -%>
+<div class="container">
+  <h1><%=title%></h1>
+  <p style="color:black"><%=content%></p>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      var title = document.getElementById("title");
+      title.innerText = '<%= title %>';
+  });
+</script>
+
+<%- include("partials/footer"); -%>

@@ -1,0 +1,105 @@
+<%- include("partials/header.ejs") %>
+<style>
+    body {
+        background-image: url("<%= backgroundImage %>");
+    }
+    @media (max-width: 992px) {
+        body {
+            background-size: cover ;
+          animation: none; /* Disable animation on mobile devices */
+        }
+      }
+</style>
+
+
+
+<section id="resume" class="resume-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Coding Experience</h3>
+                <p class="experience-text">With a keen interest in coding, I acquired proficiency in languages such as C, C++, Python and more. I completed an independent Full Stack course, working on different projects. I am proficient in web technologies such as HTML, CSS, JavaScript and back-end tools such as Node.js. I also have experience with databases such as SQL and MongoDB.
+                    During my computer science studies I delved into data structures, algorithms and computer networks. I also learned about operating systems and software engineering principles. I am eager to continue learning and apply my skills to create innovative solutions.</p>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Work Experience</h3>
+                <table class="experience-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Job</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding-right:7px">2023 - Present</td>
+                            <td style="padding-right:7px">Service representative and technical support</td>
+
+                        </tr>
+                        <tr>
+                            <td>2021 - 2022</td>
+                            <td>Warehouse manager</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-md-6">
+                <h3>Education</h3>
+                <ul class="education-list">
+                    <li>
+                        <h4>HIT, HOLON</h4>
+                        <p>Currently studying a bachelor's degree in computer science, one year left.</p>
+                    </li>
+                    <li>
+                        <h4>HIGH SCHOOL DIPLOMA</h4>
+                        <p>Finished 12 years of studies.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="projects">
+    <h1 class="text-center">My Projects</h1>
+    <div class="container-card">
+        <% let i = 1; %>
+        <% projects.forEach(proj => { %>
+            <% var image = "/images/" + i + ".png"; %>
+            <figure class="card card--<%= i !== 4 ? (i % 4) : i %>" style= "--image-src: url(<%=image%>)">
+                <% if (i === 8) { %>
+                    <figcaption style="display:none">
+                <% } else { %>
+                    <figcaption>
+                <% } %>
+                
+                    <span class="info">
+                        <h3><%= proj.name %> <i class='<%= proj.icon %>'></i></h3>
+                        <span><%=proj.content%></span>
+
+                    </span>
+                    <span class="links">
+                        <a href=<%=proj.link%>><i class="fa-brands fa-github fa-lg"></i></a>
+                    </span>
+                </figcaption>
+            </figure>
+            <%i++;%>
+        <% }) %>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var title = document.getElementById("title");
+        title.innerText = "Resume";
+    });
+</script>
+
+<%- include("partials/footer.ejs") %>

@@ -1,0 +1,110 @@
+<%- include("partials/header.ejs") %>
+
+<style>
+  .logout {
+    color: white;
+    text-decoration:dotted;
+    margin-left: 2%;
+    font-family: 'Rowdies', sans-serif;
+}
+    body {
+        background-image: url("<%= backgroundImage %>");
+    }
+</style>
+
+
+<h1 id="title"></h1>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      var title = document.getElementById("title");
+      var userName = '<%= user.name %>';
+      title.innerText = "Welcome, " + userName;
+
+      var logoutButton = document.createElement("a");
+      logoutButton.className = "logout";
+      logoutButton.innerText = "logout";
+      logoutButton.href = "/logout"; 
+
+      title.appendChild(logoutButton);
+  });
+</script>
+
+
+
+
+
+    <%  posts.forEach(post=>{ %>
+    <div class="blog-container">
+      <div class="blog-header">
+        <div class="blog-author--no-cover">
+            <img src="<%=post.emoji%>" alt="">
+            <h3><%=post.author%></h3>
+            <p><%=post.date.toString().split(' GMT')[0]%></p>
+        </div>
+      </div>
+    
+      <div class="blog-body">
+        <div class="blog-title">
+          <h1><a href="/posts/<%=post._id%>"><%=post.title%></a></h1>
+        </div>
+        <div class="blog-summary container">
+            <% if (post.content.length >= 100) { %>
+                <p>
+                  <%= post.content.substring(0, 100) + " ..." %>
+                  <a href="/posts/<%= post._id %>">Read More</a>
+                </p>
+              <% } else { %>
+                <p><%= post.content %></p>
+              <% } %>
+              
+        </div>
+
+      </div>
+      
+      <div class="blog-footer">
+        <ul>
+          <li class="published-date"><%=dayPassed(post.date)%> Days Ago</li>
+        </ul>
+        <% if (user && user.username === 'oshrico2@gmail.com') { %>
+          <form action="/delete" method="POST">
+          <button type="submit" class="delete-button"  name="post" value="<%= post._id %>">Delete</button>
+        </form>
+        <% } %>
+      </div>
+    </div>
+    <% }) %>
+
+
+    <div style="text-align: center;">
+        <a href="/compose">
+            <button class="btn-blog">Add Post</button>
+        </a>
+    </div>
+      
+    <script type="text/javascript" src="//use.typekit.net/wtt0gtr.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    
+
+
+
+
+
+
+
+
+</div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (window.location.hash === '#_=_') {
+          history.replaceState 
+            ? history.replaceState(null, null, window.location.href.split('#')[0])
+            : window.location.hash = '';
+        }
+      });
+      
+</script>
+
+<%- include("partials/footer.ejs") %>

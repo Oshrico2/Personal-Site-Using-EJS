@@ -1,0 +1,12 @@
+<div class="form-post row">
+<%  posts.forEach(post=>{ %>
+    <div class="post-unit col-lg-4 col-sm-12 conatiner">
+    <h1><%=post.title%></h1>
+    <p style="color: black;">
+    <%=post.content.substring(0, 100) + " ..."%>
+    <a href="/posts/<%=post._id%>">Read More</a>
+    </p>
+</div>
+    <% }) %>
+
+</div>

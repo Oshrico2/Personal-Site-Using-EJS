@@ -1,0 +1,41 @@
+<%- include("partials/header"); -%>
+
+
+<style>
+    body {
+        background-image: url("<%= backgroundImage %>");
+    }
+    .form-group{
+        margin: 10px;
+        opacity: 0.8;
+
+    }
+    .container{
+        width: 60%;
+    }
+
+</style>
+
+<div class="container" style="text-align: center;">
+<form action="/compose" method="POST">
+    <div class="form-group">
+    <input type="text" name="postTitle" placeholder="Title" class="form-control form-control-lg thick">
+</div>
+    <div class=" form-group">
+    <textarea name="postBody" placeholder="Post" id="" cols="30" rows="5" class="form-control form-control-lg thick"></textarea>
+</div>
+    <div class="text-center">
+        <button  class="btn-blog" type="submit">Submit</button>
+    </div>
+  </form>
+</div>
+  
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var title = document.getElementById("title");
+        title.innerText = "Add a post";
+    });
+</script>
+
+<%- include("partials/footer"); -%>
