@@ -144,7 +144,7 @@ passport.deserializeUser(function(id,done){
 passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: "http://localhost:3000/auth/google/secrets"
+    callbackURL: "https://osher-site-2499c2af4256.herokuapp.com/auth/google/secrets"
   },
   function(accessToken, refreshToken, profile, cb) {
 
@@ -166,7 +166,7 @@ passport.use(new GoogleStrategy({
 passport.use(new FacebookStrategy({
     clientID: process.env.CLIENT_ID_FACEBOOK,
     clientSecret: process.env.CLIENT_SECRET_FACEBOOK,
-    callbackURL: "http://localhost:3000/auth/facebook/secrets",
+    callbackURL: "https://osher-site-2499c2af4256.herokuapp.com/auth/facebook/secrets",
     profileFields: ['id', 'displayName', 'photos', 'email']
   },
   function(accessToken, refreshToken, profile, cb) {
@@ -185,7 +185,7 @@ passport.use(new FacebookStrategy({
 passport.use(new GitHubStrategy({
     clientID: process.env.CLIENT_ID_GITHUB,
     clientSecret: process.env.CLIENT_SECRET_GITHUB,
-    callbackURL: "http://localhost:3000/auth/github/secrets"
+    callbackURL: "https://osher-site-2499c2af4256.herokuapp.com/auth/github/secrets"
   },
   function(accessToken, refreshToken, profile, done) {
 
