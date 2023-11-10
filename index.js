@@ -144,7 +144,7 @@ passport.deserializeUser(function(id,done){
 passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: "http://www.oshercohen.com/auth/google/secrets"
+    callbackURL: "/auth/google/secrets"
   },
   function(accessToken, refreshToken, profile, cb) {
     console.log(process.env.PORT);
@@ -166,7 +166,7 @@ passport.use(new GoogleStrategy({
 passport.use(new FacebookStrategy({
     clientID: process.env.CLIENT_ID_FACEBOOK,
     clientSecret: process.env.CLIENT_SECRET_FACEBOOK,
-    callbackURL:  "http://www.oshercohen.com/auth/facebook/secrets",
+    callbackURL:  "/auth/facebook/secrets",
     profileFields: ['id', 'displayName', 'photos', 'email']
   },
   function(accessToken, refreshToken, profile, cb) {
@@ -185,7 +185,7 @@ passport.use(new FacebookStrategy({
 passport.use(new GitHubStrategy({
     clientID: process.env.CLIENT_ID_GITHUB,
     clientSecret: process.env.CLIENT_SECRET_GITHUB,
-    callbackURL: "http://www.oshercohen.com/auth/github/secrets"
+    callbackURL: "/auth/github/secrets"
   },
   function(accessToken, refreshToken, profile, done) {
     console.log(process.env.PORT);
@@ -468,9 +468,10 @@ app.post("/contact",(req,res)=>{
   
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+app.listen(3000, '0.0.0.0', () => {
+  console.log('Server is running on port 3000');
 });
+
 
 
 
