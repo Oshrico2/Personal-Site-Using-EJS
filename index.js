@@ -144,7 +144,7 @@ passport.deserializeUser(function(id,done){
 passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: "https://www.oshercohen.com/auth/google/secrets"
+    callbackURL: "https://www.oshercohen.com/auth/google/secrets/google-callback"
   },
   function(accessToken, refreshToken, profile, cb) {
     console.log(process.env.PORT);
