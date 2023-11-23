@@ -9,6 +9,8 @@
           animation: none; /* Disable animation on mobile devices */
         }
       }
+
+    
 </style>
 
 
@@ -71,11 +73,11 @@
     <h1 class="text-center">My Projects</h1>
     <div class="container-card">
         <% let i = 1; %>
-        <% projects.forEach(proj => { %>
+        <% projects.forEach((proj) => { %>
             <% var image = "/images/" + i + ".png"; %>
             <figure class="card card--<%= i !== 4 ? (i % 4) : i %>" style= "--image-src: url(<%=image%>)">
-                <% if (i === 8) { %>
-                    <figcaption style="display:none">
+                <% if (i === 8 || i === 12) { %>
+                    <figcaption style="display:none" >
                 <% } else { %>
                     <figcaption>
                 <% } %>

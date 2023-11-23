@@ -54,7 +54,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect(process.env.DATABASE,{useNewUrlParser: true});
+mongoose.connect(process.env.DATABASE);
 
 const userSchema = new mongoose.Schema({
     name:String,
@@ -385,7 +385,7 @@ app.post('/register', (req, res) => {
   app.get("/posts/:postId", function(req, res){
     const requestedPostId = req.params.postId;
     Post.findById({_id:requestedPostId}).then(post=>{
-      res.render("post",{title:post.title,content:post.content});
+      res.render("post",{title:post.title,content:post.content,backgroundImage:'/images/background-blog.jpg'});
     });
   
   });

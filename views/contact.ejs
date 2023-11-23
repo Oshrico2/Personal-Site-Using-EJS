@@ -1,96 +1,89 @@
 <%- include("partials/header.ejs") %>
 
 <style>
-    body {
-        background-color: #f0f0f0; /* Set a temporary background color */
+    body{
         background-image: url("<%= backgroundImage %>");
     }
-    @media (max-width: 992px) {
-        body {
+    @media (max-width : 992px) {
+        body{
             animation: none;
         }
+        
     }
-    .form-group {
+    .form-group{
         margin: 10px;
         opacity: 0.7;
     }
-    .container-contact {
-        width: 60%;
-        padding: 20px;
-        background-color: rgba(0, 0, 0, 0.316);
-        box-shadow: 0 0 4px 0 rgba(255, 255, 255, 0.672);
-        border-radius: 5%;
+    .container-contact{
+      width: 60%;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.316);
+      box-shadow: 0 0 4px 0 rgba(255, 255, 255, 0.672);
+      border-radius: 5%;
     }
+    
 </style>
 
+
 <form class="container container-contact" action="/contact" method="POST" id="contactForm">
-    <!-- Name -->
-    <div class="form-group">
-        <input type="text" name="name" class="form-control form-control-lg thick" placeholder="Name" required>
-    </div>
 
-    <!-- E-mail -->
-    <div class="form-group">
-        <input type="email" name="email" id="formEmail" class="form-control form-control-lg thick" placeholder="E-mail" required>
-    </div>
+        <!-- Name -->
+        <div class="form-group">
+            <input type="text" name="name" class="form-control form-control-lg thick" placeholder="Name" required>
+        </div>
 
-    <!-- Message -->
-    <div class="form-group ">
-        <textarea name="message" class="form-control form-control-lg" rows="7" placeholder="Message" required></textarea>
-    </div>
+        <!-- E-mail -->
+        <div class="form-group">
+            <input type="email" name="email" id="formEmail" class="form-control form-control-lg thick" placeholder="E-mail" required>
+        </div>
 
-    <!-- Submit btn -->
-    <div class="button-container text-center">
-        <button type="submit" class="btn-contact" tabIndex="-1" id="submitBtn">Send message</button>
-        <div class="loading-circle"></div>
-    </div>
+        <!-- Message -->
+        <div class="form-group ">
+            <textarea name="message" class="form-control form-control-lg" rows="7" placeholder="Message" required></textarea>
+        </div>
+    
+        <!-- Submit btn -->
+        <div class="button-container text-center">
+            <button type="submit" class="btn-contact" tabIndex="-1" id="submitBtn">Send message</button>
+            <div class="loading-circle"></div>
+        </div>
+        
+
 </form>
 
+
+
 <script>
-    // Preload the background image
-    const backgroundImage = new Image();
-    backgroundImage.src = '<%= backgroundImage %>';
 
-    // Function to execute when the background image is loaded
-    function onBackgroundImageLoad() {
-        document.body.style.backgroundImage = `url('${backgroundImage.src}')`;
-        // Add any other actions you want to perform after the image is loaded
-    }
 
-    // Check if the image is already cached (instant load) or attach a load event listener
-    if (backgroundImage.complete) {
-        onBackgroundImageLoad();
-    } else {
-        backgroundImage.onload = onBackgroundImageLoad;
-    }
-
-    document.getElementById('submitBtn').addEventListener('click', function (event) {
+    document.getElementById('submitBtn').addEventListener('click', function(event) {
         event.preventDefault(); // Prevents the form from submitting immediately
-
+        
         var formIsValid = true;
         var requiredFields = document.getElementById('contactForm').querySelectorAll('[required]');
-
-        requiredFields.forEach(function (field) {
+        
+        requiredFields.forEach(function(field) {
             if (!field.value) {
                 formIsValid = false;
             }
         });
-
+    
         if (formIsValid) {
             var loadingCircle = document.querySelector('.loading-circle');
             document.getElementById("submitBtn").innerHTML = "";
             loadingCircle.style.display = 'block';
-
+    
             // Wait for 2 seconds before submitting the form
-            setTimeout(function () {
+            setTimeout(function() {
                 document.getElementById('contactForm').submit();
             }, 2000);
         } else {
             alert("Please fill in all required fields.");
         }
     });
+    
 
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function() {
         var title = document.getElementById("title");
         title.innerText = "Contact";
     });
